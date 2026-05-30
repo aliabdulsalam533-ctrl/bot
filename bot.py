@@ -3,8 +3,11 @@ from telegram.ext import Application, CommandHandler, MessageHandler, filters, C
 
 
 import base64
+import os
 
-with open("token.enc", "rb") as f:
+path = os.path.join(os.path.dirname(__file__), "token.enc")
+
+with open(path, "rb") as f:
     encoded = f.read()
 
 TOKEN = base64.b64decode(encoded).decode()
