@@ -1,23 +1,13 @@
 from telegram import Update
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-
-
-import base64
 import os
 
-path = os.path.join(os.path.dirname(__file__), "token.enc")
+TOKEN = os.getenv("BOT_TOKEN")
 
-with open(path, "rb") as f:
-    encoded = f.read()
-
-TOKEN = base64.b64decode(encoded).decode()
+if not TOKEN:
+    raise ValueError("BOT_TOKEN not found")
 
 print("Bot token loaded ✔")
-
-
-
-
-
 
 
 def clean_text(text):
